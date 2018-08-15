@@ -1,4 +1,4 @@
-package com.pjft.addressbook;
+package com.pjft.addressbook.model;
 
 public class GroupData {
   private final String name;

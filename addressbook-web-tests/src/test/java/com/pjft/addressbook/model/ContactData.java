@@ -1,4 +1,4 @@
-package com.pjft.addressbook;
+package com.pjft.addressbook.model;
 
 public class ContactData {
   private final String firstName;
