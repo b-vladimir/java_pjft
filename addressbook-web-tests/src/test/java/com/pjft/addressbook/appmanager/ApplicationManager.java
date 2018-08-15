@@ -15,15 +15,6 @@ public class ApplicationManager {
   private SessionHelper sessionHelper;
   private ContactHelper contactHelper;
 
-  public static boolean isAlertPresent(FirefoxDriver wd) {
-    try {
-      wd.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
-  }
-
   public void init() {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -34,6 +25,7 @@ public class ApplicationManager {
     sessionHelper = new SessionHelper(wd);
     contactHelper = new ContactHelper(wd);
     sessionHelper.login("admin", "secret");
+    sessionHelper.initAut();
   }
 
   public void stop() {

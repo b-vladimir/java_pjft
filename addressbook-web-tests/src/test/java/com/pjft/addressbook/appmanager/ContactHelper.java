@@ -4,17 +4,15 @@ import com.pjft.addressbook.model.ContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class ContactHelper {
-   private WebDriver wd;
+public class ContactHelper extends HelperBase{
 
   public ContactHelper(WebDriver wd) {
-    this.wd = wd;
+    super(wd);
   }
 
   public void fillContactData(ContactData contactData) {
-      wd.findElement(By.name("firstname")).click();
-      wd.findElement(By.name("firstname")).clear();
-      wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstName());
+      type(By.name("firstname"), contactData.getFirstName());
+      type(By.name("lastname"), contactData.getLastName());
       wd.findElement(By.name("middlename")).click();
       wd.findElement(By.name("lastname")).click();
       wd.findElement(By.name("lastname")).clear();
@@ -56,6 +54,6 @@ public class ContactHelper {
   }
 
   public void initContactCreation() {
-      wd.findElement(By.linkText("add new")).click();
+      click(By.linkText("add new"));
   }
 }
