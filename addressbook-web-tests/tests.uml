@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="751.0" y="224.0">com.pjft.addressbook.appmanager.NavigationHelper</node>
+    <node x="548.0" y="522.0">com.pjft.addressbook.tests.CreateContactTests</node>
+    <node x="0.0" y="224.0">com.pjft.addressbook.appmanager.SessionHelper</node>
+    <node x="497.0" y="213.0">com.pjft.addressbook.appmanager.GroupHelper</node>
+    <node x="229.0" y="213.0">com.pjft.addressbook.appmanager.ContactHelper</node>
+    <node x="0.0" y="376.0">com.pjft.addressbook.appmanager.ApplicationManager</node>
+    <node x="328.0" y="522.0">com.pjft.addressbook.tests.GroupCreationTests</node>
+    <node x="437.5" y="376.0">com.pjft.addressbook.tests.TestBase</node>
+    <node x="384.5" y="0.0">com.pjft.addressbook.appmanager.HelperBase</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.pjft.addressbook.appmanager.ContactHelper" target="com.pjft.addressbook.appmanager.HelperBase">
+      <point x="0.0" y="-59.0" />
+      <point x="353.0" y="193.0" />
+      <point x="458.75" y="193.0" />
+      <point x="-24.75" y="81.5" />
+    </edge>
+    <edge source="com.pjft.addressbook.tests.GroupCreationTests" target="com.pjft.addressbook.tests.TestBase">
+      <point x="0.0" y="-25.5" />
+      <point x="428.0" y="497.0" />
+      <point x="487.5" y="497.0" />
+      <point x="-50.0" y="48.0" />
+    </edge>
+    <edge source="com.pjft.addressbook.appmanager.GroupHelper" target="com.pjft.addressbook.appmanager.HelperBase">
+      <point x="0.0" y="-59.0" />
+      <point x="614.0" y="193.0" />
+      <point x="508.25" y="193.0" />
+      <point x="24.75" y="81.5" />
+    </edge>
+    <edge source="com.pjft.addressbook.appmanager.SessionHelper" target="com.pjft.addressbook.appmanager.HelperBase">
+      <point x="0.0" y="-48.0" />
+      <point x="104.5" y="183.0" />
+      <point x="409.25" y="183.0" />
+      <point x="-74.25" y="81.5" />
+    </edge>
+    <edge source="com.pjft.addressbook.tests.CreateContactTests" target="com.pjft.addressbook.tests.TestBase">
+      <point x="0.0" y="-25.5" />
+      <point x="647.0" y="497.0" />
+      <point x="587.5" y="497.0" />
+      <point x="50.0" y="48.0" />
+    </edge>
+    <edge source="com.pjft.addressbook.appmanager.NavigationHelper" target="com.pjft.addressbook.appmanager.HelperBase">
+      <point x="0.0" y="-48.0" />
+      <point x="865.0" y="183.0" />
+      <point x="557.75" y="183.0" />
+      <point x="74.25" y="81.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="8.0" y="460.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -16,6 +16,12 @@ public class HelperBase {
     wd.findElement(locator).click();
   }
 
+  protected void selectCheckBox(By locator) {
+    if (!wd.findElement(locator).isSelected()) {
+      wd.findElement(locator).click();
+    }
+  }
+
   protected void type(By locator, String text) {
     click(locator);
     wd.findElement(locator).clear();
