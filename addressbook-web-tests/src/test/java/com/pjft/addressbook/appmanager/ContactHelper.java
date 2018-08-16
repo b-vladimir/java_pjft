@@ -23,7 +23,6 @@ public class ContactHelper extends HelperBase {
     selectCheckBox(By.xpath("//div[@id='content']/form/select[1]//option[3]"));
     selectCheckBox(By.xpath("//div[@id='content']/form/select[2]//option[2]"));
     type(By.name("byear"), contactData.getYear());
-    selectCheckBox(By.xpath("//div[@id='content']/form/select[5]//option[3]"));
   }
 
 
@@ -33,5 +32,21 @@ public class ContactHelper extends HelperBase {
 
   public void initContactCreation() {
     click(By.linkText("add new"));
+  }
+
+  public void initContactModification() {
+    click(By.cssSelector("#maintable > tbody > tr:nth-child(2) > td:nth-child(8) > a > img"));
+  }
+
+  public void submitContactModification() {
+    click(By.cssSelector("#content > form:nth-child(2) > input[type=\"submit\"]:nth-child(86)"));
+  }
+
+  public void selectContact() {
+    click(By.name("selected[]"));
+  }
+
+  public void initContactDelete() {
+    click(By.cssSelector("#content > form:nth-child(10) > div:nth-child(8) > input[type=\"button\"]"));
   }
 }

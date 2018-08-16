@@ -36,4 +36,8 @@ public class HelperBase {
       return false;
     }
   }
+
+  public void acceptDialogWindow() {
+    wd.switchTo().alert().accept();
+  }
 }

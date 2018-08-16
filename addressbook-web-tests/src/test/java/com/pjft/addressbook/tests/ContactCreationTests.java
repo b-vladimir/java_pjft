@@ -3,7 +3,7 @@ package com.pjft.addressbook.tests;
 import com.pjft.addressbook.model.ContactData;
 import org.testng.annotations.Test;
 
-public class CreateContactTests extends TestBase {
+public class ContactCreationTests extends TestBase {
 
   @Test
   public void testCreateContact() {
