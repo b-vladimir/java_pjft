@@ -11,8 +11,11 @@ public class ContactData {
   private final String email;
   private final String site;
   private final String year;
+  private String group;
+  private boolean creation;
 
-  public ContactData(String firstName, String lastName, String avatar, String title, String companyInfo, String address, String mobilePhone, String email, String site, String year) {
+  public ContactData(String firstName, String lastName, String avatar, String title, String companyInfo,
+                     String address, String mobilePhone, String email, String site, String year, String group, boolean creation) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.avatar = avatar;
@@ -23,6 +26,8 @@ public class ContactData {
     this.email = email;
     this.site = site;
     this.year = year;
+    this.group = group;
+    this.creation = creation;
   }
 
   public String getFirstName() {
@@ -63,5 +68,13 @@ public class ContactData {
 
   public String getYear() {
     return year;
+  }
+
+  public String getGroup() {
+    return group;
+  }
+
+  public boolean isCreation() {
+    return creation;
   }
 }

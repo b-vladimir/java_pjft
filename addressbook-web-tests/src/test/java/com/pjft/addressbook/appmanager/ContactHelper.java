@@ -2,7 +2,10 @@ package com.pjft.addressbook.appmanager;
 
 import com.pjft.addressbook.model.ContactData;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 public class ContactHelper extends HelperBase {
 
@@ -23,8 +26,12 @@ public class ContactHelper extends HelperBase {
     selectCheckBox(By.xpath("//div[@id='content']/form/select[1]//option[3]"));
     selectCheckBox(By.xpath("//div[@id='content']/form/select[2]//option[2]"));
     type(By.name("byear"), contactData.getYear());
+    if (contactData.isCreation()) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    }else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
   }
-
 
   public void submitContactCreation() {
     click(By.xpath("//div[@id='content']/form/input[21]"));
