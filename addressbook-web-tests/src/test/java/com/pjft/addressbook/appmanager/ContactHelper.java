@@ -56,4 +56,19 @@ public class ContactHelper extends HelperBase {
   public void initContactDelete() {
     click(By.cssSelector("#content > form:nth-child(10) > div:nth-child(8) > input[type=\"button\"]"));
   }
+
+  public void createContact(ContactData contact) {
+    initContactCreation();
+    fillContactData(contact);
+    submitContactCreation();
+    returnToContactPage();
+  }
+
+  private void returnToContactPage() {
+    click(By.linkText("home"));
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
+  }
 }
