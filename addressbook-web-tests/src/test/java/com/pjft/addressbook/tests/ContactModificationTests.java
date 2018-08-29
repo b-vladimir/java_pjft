@@ -1,6 +1,7 @@
 package com.pjft.addressbook.tests;
 
 import com.pjft.addressbook.model.ContactData;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ContactModificationTests extends TestBase{
