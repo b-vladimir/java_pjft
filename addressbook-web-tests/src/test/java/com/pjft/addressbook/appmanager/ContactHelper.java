@@ -49,8 +49,8 @@ public class ContactHelper extends HelperBase {
     click(By.cssSelector("#content > form:nth-child(2) > input[type=\"submit\"]:nth-child(86)"));
   }
 
-  public void selectContact() {
-    click(By.name("selected[]"));
+  public void selectContact(int i) {
+    wd.findElements(By.name("selected[]")).get(i).click();
   }
 
   public void initContactDelete() {
