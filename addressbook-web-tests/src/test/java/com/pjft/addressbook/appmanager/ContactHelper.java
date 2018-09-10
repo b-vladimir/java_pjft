@@ -61,15 +61,29 @@ public class ContactHelper extends HelperBase {
     click(By.cssSelector("#content > form:nth-child(10) > div:nth-child(8) > input[type=\"button\"]"));
   }
 
-  public void createContact(ContactData contact) {
+  private void returnToContactPage() {
+    click(By.linkText("home"));
+  }
+
+  public void create(ContactData contact) {
     initContactCreation();
     fillContactData(contact);
     submitContactCreation();
     returnToContactPage();
   }
 
-  private void returnToContactPage() {
-    click(By.linkText("home"));
+  public void modify(ContactData contact) {
+    initContactModification();
+    fillContactData(contact);
+    submitContactModification();
+    returnToContactPage();
+  }
+
+  public void delete(int index) {
+    selectContact(index);
+    initContactDelete();
+    acceptDialogWindow();
+    returnToContactPage();
   }
 
   public boolean isThereAContact() {
@@ -80,7 +94,7 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.cssSelector("tr[name=entry]"));
     for (WebElement element : elements){
