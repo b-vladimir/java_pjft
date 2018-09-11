@@ -24,7 +24,9 @@ public class ContactHelper extends HelperBase {
     type(By.name("title"), contactData.getTitle());
     type(By.name("company"), contactData.getCompanyInfo());
     type(By.name("address"), contactData.getAddress());
+    type(By.name("home"), contactData.getHomePhone());
     type(By.name("mobile"), contactData.getMobilePhone());
+    type(By.name("work"), contactData.getWorkPhone());
     type(By.name("email"), contactData.getEmail());
     type(By.name("homepage"), contactData.getSite());
     selectCheckBox(By.xpath("//div[@id='content']/form/select[1]//option[3]"));
@@ -101,8 +103,7 @@ public class ContactHelper extends HelperBase {
       int id = Integer.parseInt(element.findElement(By.cssSelector("td:nth-child(1) > input")).getAttribute("value"));
       String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
       String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-      ContactData contact = new ContactData(firstName, lastName, null, null, null,
-              null, null, null, null, null, null, false);
+      ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName).withCreation(false);
       contacts.add(contact);
     }
     return contacts;

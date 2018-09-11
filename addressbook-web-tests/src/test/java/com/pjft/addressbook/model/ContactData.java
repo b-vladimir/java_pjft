@@ -3,56 +3,95 @@ package com.pjft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-  private int id;
-  private final String firstName;
-  private final String lastName;
-  private final String avatar;
-  private final String title;
-  private final String companyInfo;
-  private final String address;
-  private final String mobilePhone;
-  private final String email;
-  private final String site;
-  private final String year;
+  private int id=0;
+  private String firstName;
+  private String lastName;
+  private String avatar;
+  private String title;
+  private String companyInfo;
+  private String address;
+  private String homePhone;
+  private String mobilePhone;
+  private String workPhone;
+  private String email;
+  private String site;
+  private String year;
   private String group;
   private boolean creation;
 
-  public ContactData(String firstName, String lastName, String avatar, String title, String companyInfo,
-                     String address, String mobilePhone, String email, String site, String year, String group, boolean creation) {
-    this.id = 0;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.avatar = avatar;
-    this.title = title;
-    this.companyInfo = companyInfo;
-    this.address = address;
-    this.mobilePhone = mobilePhone;
-    this.email = email;
-    this.site = site;
-    this.year = year;
-    this.group = group;
-    this.creation = creation;
+  public ContactData withId(int id) {
+    this.id = id;
+    return this;
   }
 
-  public ContactData(int id ,String firstName, String lastName, String avatar, String title, String companyInfo,
-                     String address, String mobilePhone, String email, String site, String year, String group, boolean creation) {
-    this.id = id;
+  public ContactData withFirstName(String firstName) {
     this.firstName = firstName;
-    this.lastName = lastName;
-    this.avatar = avatar;
-    this.title = title;
-    this.companyInfo = companyInfo;
-    this.address = address;
-    this.mobilePhone = mobilePhone;
-    this.email = email;
-    this.site = site;
-    this.year = year;
-    this.group = group;
-    this.creation = creation;
+    return this;
   }
 
-  public void setId(int id) {
-    this.id = id;
+  public ContactData withLastName(String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
+  public ContactData withAvatar(String avatar) {
+    this.avatar = avatar;
+    return this;
+  }
+
+  public ContactData withTitle(String title) {
+    this.title = title;
+    return this;
+  }
+
+  public ContactData withCompanyInfo(String companyInfo) {
+    this.companyInfo = companyInfo;
+    return this;
+  }
+
+  public ContactData withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public ContactData withHomePhone(String homePhone) {
+    this.homePhone = homePhone;
+    return this;
+  }
+
+  public ContactData withMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
+    return this;
+  }
+
+  public ContactData withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
+    return this;
+  }
+
+  public ContactData withEmail(String email) {
+    this.email = email;
+    return this;
+  }
+
+  public ContactData withSite(String site) {
+    this.site = site;
+    return this;
+  }
+
+  public ContactData withYear(String year) {
+    this.year = year;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
+  }
+
+  public ContactData withCreation(boolean creation) {
+    this.creation = creation;
+    return this;
   }
 
   public int getId() {
@@ -83,8 +122,16 @@ public class ContactData {
     return address;
   }
 
+  public String getHomePhone() {
+    return homePhone;
+  }
+
   public String getMobilePhone() {
     return mobilePhone;
+  }
+
+  public String getWorkPhone() {
+    return workPhone;
   }
 
   public String getEmail() {
