@@ -1,6 +1,7 @@
 package com.pjft.addressbook.appmanager;
 
 import com.pjft.addressbook.model.GroupData;
+import com.pjft.addressbook.model.Groups;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -90,26 +91,13 @@ public class GroupHelper extends HelperBase{
     return  wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<GroupData> list() {
-    List<GroupData> groups = new ArrayList<GroupData>();
+  public Groups all() {
+    Groups groups = new Groups();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element : elements){
       String name = element.getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      GroupData group = new GroupData().withId(id).withName(name);
-      groups.add(group);
-    }
-    return groups;
-  }
-
-  public Set<GroupData> all() {
-    Set<GroupData> groups = new HashSet<GroupData>();
-    List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
-    for (WebElement element : elements){
-      String name = element.getText();
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      GroupData group = new GroupData().withId(id).withName(name);
-      groups.add(group);
+      groups.add(new GroupData().withId(id).withName(name));
     }
     return groups;
   }
