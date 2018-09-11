@@ -1,6 +1,7 @@
 package com.pjft.addressbook.appmanager;
 
 import com.pjft.addressbook.model.ContactData;
+import com.pjft.addressbook.model.Contacts;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +10,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -59,6 +62,10 @@ public class ContactHelper extends HelperBase {
     wd.findElements(By.name("selected[]")).get(i).click();
   }
 
+  private void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+  }
+
   public void initContactDelete() {
     click(By.cssSelector("#content > form:nth-child(10) > div:nth-child(8) > input[type=\"button\"]"));
   }
@@ -88,6 +95,13 @@ public class ContactHelper extends HelperBase {
     returnToContactPage();
   }
 
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
+    initContactDelete();
+    acceptDialogWindow();
+    returnToContactPage();
+  }
+
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
   }
@@ -96,16 +110,16 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> list() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
+  public Contacts all() {
+    Contacts contacts = new Contacts();
     List<WebElement> elements = wd.findElements(By.cssSelector("tr[name=entry]"));
     for (WebElement element : elements){
       int id = Integer.parseInt(element.findElement(By.cssSelector("td:nth-child(1) > input")).getAttribute("value"));
       String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
       String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-      ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName).withCreation(false);
-      contacts.add(contact);
+      contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName).withCreation(false));
     }
     return contacts;
   }
+
 }
