@@ -2,17 +2,16 @@ package com.pjft.addressbook.appmanager;
 
 import com.pjft.addressbook.model.ContactData;
 import com.pjft.addressbook.model.Contacts;
+import com.pjft.addressbook.tests.ContactInformationComparison;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ContactHelper extends HelperBase {
 
@@ -50,8 +49,11 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void initContactModification() {
-    click(By.cssSelector("#maintable > tbody > tr:nth-child(2) > td:nth-child(8) > a > img"));
+  public void initContactModificationById(int id) {
+    WebElement checkbox = wd.findElement(By.cssSelector("input[value='" + id + "']"));
+    WebElement row = checkbox.findElement(By.xpath("./../.."));
+    List<WebElement> cells = row.findElements(By.xpath("td"));
+    cells.get(7).findElement(By.tagName("a")).click();
   }
 
   public void submitContactModification() {
@@ -82,7 +84,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void modify(ContactData contact) {
-    initContactModification();
+    initContactModificationById(contact.getId());
     fillContactData(contact);
     submitContactModification();
     returnToContactPage();
@@ -117,9 +119,30 @@ public class ContactHelper extends HelperBase {
       int id = Integer.parseInt(element.findElement(By.cssSelector("td:nth-child(1) > input")).getAttribute("value"));
       String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
       String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-      contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName).withCreation(false));
+      String address = element.findElement(By.cssSelector("td:nth-child(4)")).getText();
+      String email = element.findElement(By.cssSelector("td:nth-child(5)")).getText();
+      String allPhones = element.findElement(By.cssSelector("td:nth-child(6)")).getText();
+      contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName).withAddress(address).withEmail(email).withAllPhones(allPhones).withCreation(false));
     }
     return contacts;
   }
 
+  public String phoneInfoFromContact() {
+    String homePhone = wd.findElement(By.name("home")).getAttribute("value");
+    String mobilePhone = wd.findElement(By.name("mobile")).getAttribute("value");
+    String workPhone = wd.findElement(By.name("work")).getAttribute("value");
+    return Arrays.asList(homePhone, mobilePhone, workPhone).stream().filter((s) -> ! s.equals("")).map(ContactHelper::cleaned).collect(Collectors.joining("\n"));
+  }
+
+  public static String cleaned(String phone){
+    return phone.replaceAll("\\s", "").replaceAll("-()", "");
+  }
+
+  public String addressInfoFromContact() {
+    return wd.findElement(By.name("address")).getText();
+  }
+
+  public String emailInfoFromContact() {
+    return wd.findElement(By.name("email")).getAttribute("value");
+  }
 }

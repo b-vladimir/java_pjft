@@ -1,6 +1,7 @@
 package com.pjft.addressbook.tests;
 
 import com.pjft.addressbook.model.ContactData;
+import com.pjft.addressbook.model.Contacts;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -17,7 +18,9 @@ public class ContactModificationTests extends TestBase{
 
   @Test
   public void testContactModification(){
-    ContactData contact = new ContactData().withFirstName("Name edit").withLastName("LastName edit").withAddress("testAddress edit").withEmail("Test@test.com")
+    Contacts before = app.contact().all();
+    ContactData modifiedConcact = before.iterator().next();
+    ContactData contact = new ContactData().withId(modifiedConcact.getId()).withFirstName("Name edit").withLastName("LastName edit").withAddress("testAddress edit").withEmail("Test@test.com")
             .withHomePhone("0556953214").withMobilePhone("123").withWorkPhone("+986554").withCreation(false);
     app.contact().modify(contact);
   }
