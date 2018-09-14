@@ -17,7 +17,7 @@ public class ContactData {
   private String email;
   private String site;
   private String year;
-  private String group;
+  private String group = "[none]";
   private boolean creation;
 
   public ContactData withId(int id) {

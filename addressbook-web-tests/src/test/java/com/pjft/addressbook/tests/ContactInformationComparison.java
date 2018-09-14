@@ -1,11 +1,11 @@
 package com.pjft.addressbook.tests;
 
 import com.pjft.addressbook.model.ContactData;
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
+import com.pjft.addressbook.model.Contacts;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactInformationComparison extends TestBase {
@@ -27,8 +27,20 @@ public class ContactInformationComparison extends TestBase {
     String addressFromForm = app.contact().addressInfoFromContact();
     String emailFromForm = app.contact().emailInfoFromContact();
 
-    assertThat(contact.getAllPhones(), CoreMatchers.equalTo(phonesFromForm));
-    assertThat(contact.getAddress(), CoreMatchers.equalTo(addressFromForm));
-    assertThat(contact.getEmail(), CoreMatchers.equalTo(emailFromForm));
+    assertThat(contact.getAllPhones(), equalTo(phonesFromForm));
+    assertThat(contact.getAddress(), equalTo(addressFromForm));
+    assertThat(contact.getEmail(), equalTo(emailFromForm));
   }
+
+  @Test
+  public void testDetailedInformation(){
+    ContactData contact = app.contact().all().iterator().next();
+    app.contact().detailedInfo(contact.getId());
+    Contacts detailedInfo = app.contact().collectDetailedInfo();
+    app.contact().initContactModification();
+    Contacts fromEditPage = app.contact().collectInfo();
+
+    assertThat(detailedInfo, equalTo(fromEditPage));
+  }
+
 }
