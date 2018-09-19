@@ -3,6 +3,8 @@ package com.pjft.addressbook.generators;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.pjft.addressbook.model.ContactData;
 import com.thoughtworks.xstream.XStream;
 
@@ -42,9 +44,19 @@ public class ContactDataGenerator {
       saveAsCSV(contacts, new File(file));
     } else if (format.equals("xml")){
       saveAsXML(contacts, new File(file));
+    } else if (format.equals("json")) {
+      saveAsJSON(contacts, new File(file));
     } else {
       System.out.println("Unrecognized format "+ format);
     }
+  }
+
+  private void saveAsJSON(List<ContactData> contacts, File file) throws IOException {
+    Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
+    String json = gson.toJson(contacts);
+    Writer writer = new FileWriter(file);
+    writer.write(json);
+    writer.close();
   }
 
   private void saveAsXML(List<ContactData> contacts, File file) throws IOException {

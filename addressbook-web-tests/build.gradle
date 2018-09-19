@@ -10,4 +10,5 @@ dependencies{
     compile 'it.ozimov:guava-hamcrest-matchers:2.0.0'
     compile 'com.beust:jcommander:1.72'
     compile 'com.thoughtworks.xstream:xstream:1.4.10'
+    compile 'com.google.code.gson:gson:2.8.5'
 }
