@@ -1,8 +1,13 @@
 package com.pjft.addressbook.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 import java.util.Objects;
 
+@XStreamAlias("group")
 public class GroupData {
+  @XStreamOmitField
   private int id = 0;
   private String name;
   private String header;

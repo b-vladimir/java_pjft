@@ -1,0 +1,35 @@
+<list>
+  <contact>
+    <firstName>name 0</firstName>
+    <lastName>lastname 0</lastName>
+    <address>address 0</address>
+    <homePhone>023456</homePhone>
+    <mobilePhone>02 34 56</mobilePhone>
+    <workPhone>+7-4023456</workPhone>
+    <email>email0@test.com</email>
+    <group>[none]</group>
+    <creation>true</creation>
+  </contact>
+  <contact>
+    <firstName>name 1</firstName>
+    <lastName>lastname 1</lastName>
+    <address>address 1</address>
+    <homePhone>123456</homePhone>
+    <mobilePhone>12 34 56</mobilePhone>
+    <workPhone>+7-4123456</workPhone>
+    <email>email1@test.com</email>
+    <group>[none]</group>
+    <creation>true</creation>
+  </contact>
+  <contact>
+    <firstName>name 2</firstName>
+    <lastName>lastname 2</lastName>
+    <address>address 2</address>
+    <homePhone>223456</homePhone>
+    <mobilePhone>22 34 56</mobilePhone>
+    <workPhone>+7-4223456</workPhone>
+    <email>email2@test.com</email>
+    <group>[none]</group>
+    <creation>true</creation>
+  </contact>
+</list>
