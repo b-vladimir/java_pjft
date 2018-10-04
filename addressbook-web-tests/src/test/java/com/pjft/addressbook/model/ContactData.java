@@ -3,36 +3,77 @@ package com.pjft.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.util.Objects;
 
 @XStreamAlias("contact")
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
+
   @XStreamOmitField
+  @Id
   private int id=0;
+
   @Expose
+  @Column(name = "firstname")
   private String firstName;
+
   @Expose
+  @Column(name = "lastname")
   private String lastName;
+
+  @Transient
   private String avatar;
+
+  @Transient
   private String title;
+
+  @Transient
   private String companyInfo;
+
   @Expose
+  @Column(name = "address")
+  @Type(type = "text")
   private String address;
+
   @Expose
+  @Column(name = "home")
+  @Type(type = "text")
   private String homePhone;
+
   @Expose
+  @Column(name = "mobile")
+  @Type(type = "text")
   private String mobilePhone;
+
   @Expose
+  @Column(name = "work")
+  @Type(type = "text")
   private String workPhone;
+
+  @Transient
   private String allPhones;
+
   @Expose
+  @Column(name = "email")
+  @Type(type = "text")
   private String email;
+
+  @Transient
   private String site;
+
+  @Transient
   private String year;
+
   @Expose
+  @Transient
   private String group = "[none]";
+
   @Expose
+  @Transient
   private boolean creation;
 
   public ContactData withId(int id) {

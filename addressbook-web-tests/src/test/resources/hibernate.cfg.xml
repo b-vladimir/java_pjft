@@ -36,6 +36,7 @@
 
         <!-- Names the annotated entity class -->
         <mapping class="com.pjft.addressbook.model.GroupData"/>
+        <mapping class="com.pjft.addressbook.model.ContactData"/>
 
     </session-factory>
 
