@@ -13,7 +13,7 @@ public class ContactDeleteTests extends TestBase{
   @BeforeMethod
   public void ensureContactPresence(){
     app.goTo().mainPage();
-    if (app.contact().all().size() == 0){
+    if (app.db().contacts().size() == 0){
       app.contact().create(new ContactData().withFirstName("Name").withLastName("LastName").withAddress("testAdress").withEmail("Test@test.com")
               .withHomePhone("0556953214").withMobilePhone("123").withWorkPhone("+986554").withGroup("test1 edit").withCreation(true));
     }
@@ -21,10 +21,10 @@ public class ContactDeleteTests extends TestBase{
 
   @Test
   public void testDeleteContact(){
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     ContactData deletedContact = before.iterator().next();
     app.contact().delete(deletedContact);
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after.size() + 1, equalTo(before.size()));
 
     before.remove(deletedContact);

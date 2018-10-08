@@ -235,11 +235,17 @@ public class ContactData {
     ContactData that = (ContactData) o;
     return id == that.id &&
             Objects.equals(firstName, that.firstName) &&
-            Objects.equals(lastName, that.lastName);
+            Objects.equals(lastName, that.lastName) &&
+            Objects.equals(address, that.address) &&
+            Objects.equals(homePhone, that.homePhone) &&
+            Objects.equals(mobilePhone, that.mobilePhone) &&
+            Objects.equals(workPhone, that.workPhone) &&
+            Objects.equals(email, that.email);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, firstName, lastName);
+
+    return Objects.hash(id, firstName, lastName, address, homePhone, mobilePhone, workPhone, email);
   }
 }
