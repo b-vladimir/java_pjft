@@ -58,6 +58,7 @@ public class GroupCreationTests extends TestBase{
     assertThat(after.size(), equalTo(before.size() +1));
 
     assertThat(after, equalTo(before.withAdd(group.withId(after.stream().mapToInt(GroupData::getId).max().getAsInt()))));
+    verifyGroupListInUI();
   }
 
 }
