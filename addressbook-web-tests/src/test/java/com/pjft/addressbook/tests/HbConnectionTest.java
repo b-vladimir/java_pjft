@@ -53,6 +53,7 @@ public class HbConnectionTest {
     for ( ContactData contact : (List<ContactData>) result ) {
       System.out.println(contact);
       System.out.println(contact.getGroups());
+      System.out.println(contact.getGroups().size());
     }
     session.getTransaction().commit();
     session.close();

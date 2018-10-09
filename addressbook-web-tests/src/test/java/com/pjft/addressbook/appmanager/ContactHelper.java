@@ -35,7 +35,10 @@ public class ContactHelper extends HelperBase {
     selectCheckBox(By.xpath("//div[@id='content']/form/select[2]//option[2]"));
     type(By.name("byear"), contactData.getYear());
     if (contactData.isCreation()) {
-      //new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      if (contactData.getGroups().size() > 0) {
+        Assert.assertTrue(contactData.getGroups().size() == 1);
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+      }
     }else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -74,6 +77,10 @@ public class ContactHelper extends HelperBase {
 
   public void initContactDelete() {
     click(By.cssSelector("#content > form:nth-child(10) > div:nth-child(8) > input[type=\"button\"]"));
+  }
+
+  public void initAddContact() {
+    click(By.name("add"));
   }
 
   public void detailedInfo(int id) {
@@ -185,7 +192,10 @@ public class ContactHelper extends HelperBase {
     return contact;
   }
 
-  public void addContact(ContactData contact) {
-
+  public void addContact(ContactData contact, int idGroup) {
+    selectContactById(contact.getId());
+    new Select(wd.findElement(By.name("to_group"))).selectByValue(Integer.toString(idGroup));
+    initAddContact();
   }
+
 }

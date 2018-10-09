@@ -1,6 +1,7 @@
 package com.pjft.addressbook.tests;
 
 import com.pjft.addressbook.appmanager.ApplicationManager;
+import com.pjft.addressbook.model.ContactData;
 import com.pjft.addressbook.model.GroupData;
 import com.pjft.addressbook.model.Groups;
 import org.openqa.selenium.remote.BrowserType;
@@ -35,4 +36,18 @@ public class TestBase {
     }
   }
 
+  public int verifyContactInGroup(ContactData contact) {
+    int idGroup = 0;
+    if (contact.getGroups().size() == app.db().groups().size()){
+      app.group().create(new GroupData().withName("testName").withHeader("testHeader").withFooter("testFooter"));
+      idGroup = app.db().groups().stream().mapToInt(GroupData::getId).max().getAsInt();
+    }else {
+      Groups groups = app.db().groups();
+      for (GroupData group : contact.getGroups()) {
+        groups.withOut(group);
+      }
+      idGroup = groups.iterator().next().getId();
+    }
+    return idGroup;
+  }
 }

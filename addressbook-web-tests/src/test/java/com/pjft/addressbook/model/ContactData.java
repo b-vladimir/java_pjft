@@ -70,7 +70,7 @@ public class ContactData {
   @Transient
   private String year;
 
-  @ManyToMany
+  @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(name = "address_in_groups", joinColumns = @JoinColumn(name = "id"),
           inverseJoinColumns = @JoinColumn(name = "group_id"))
   private Set<GroupData> groups = new HashSet<GroupData>();
@@ -245,5 +245,10 @@ public class ContactData {
   public int hashCode() {
 
     return Objects.hash(id, firstName, lastName, address, homePhone, mobilePhone, workPhone, email);
+  }
+
+  public ContactData inGroup(GroupData group) {
+    groups.add(group);
+    return this;
   }
 }
