@@ -35,7 +35,7 @@ public class ContactHelper extends HelperBase {
     selectCheckBox(By.xpath("//div[@id='content']/form/select[2]//option[2]"));
     type(By.name("byear"), contactData.getYear());
     if (contactData.isCreation()) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      //new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     }else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -185,4 +185,7 @@ public class ContactHelper extends HelperBase {
     return contact;
   }
 
+  public void addContact(ContactData contact) {
+
+  }
 }

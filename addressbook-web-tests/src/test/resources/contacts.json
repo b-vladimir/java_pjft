@@ -7,7 +7,6 @@
     "mobilePhone": "02 34 56",
     "workPhone": "+7-4023456",
     "email": "email0@test.com",
-    "group": "[none]",
     "creation": true
   },
   {
@@ -18,7 +17,6 @@
     "mobilePhone": "12 34 56",
     "workPhone": "+7-4123456",
     "email": "email1@test.com",
-    "group": "[none]",
     "creation": true
   },
   {
@@ -29,7 +27,6 @@
     "mobilePhone": "22 34 56",
     "workPhone": "+7-4223456",
     "email": "email2@test.com",
-    "group": "[none]",
     "creation": true
   }
 ]
