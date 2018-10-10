@@ -4,6 +4,8 @@ import com.pjft.addressbook.model.ContactData;
 import com.pjft.addressbook.model.Contacts;
 import org.testng.annotations.Test;
 
+import java.util.Objects;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -18,8 +20,8 @@ public class AddContactToGroupTests extends TestBase {
     int idGroup = verifyContactInGroup(addedContact);
     app.contact().addContact(addedContact, idGroup);
 
-    int afterAdd = app.db().contacts().;
-            //addedContact.getGroups().size();
+    int afterAdd = app.db().contacts().stream().filter(data -> Objects.equals(data.getId(), addedContact.getId()))
+            .findFirst().get().getGroups().size();
 
     assertThat(beforeAdd, equalTo(afterAdd-1));
   }
