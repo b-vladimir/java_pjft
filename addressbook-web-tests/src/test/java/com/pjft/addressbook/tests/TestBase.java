@@ -8,6 +8,7 @@ import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
+import java.io.IOException;
 import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -49,5 +50,10 @@ public class TestBase {
       idGroup = groups.iterator().next().getId();
     }
     return idGroup;
+  }
+
+  public void chooseGroupSet() {
+    Groups groups = app.db().groups().stream().filter(g -> g.getContacts().size() != 0).collect(Collectors.toCollection(Groups::new));
+      app.contact().selectGroupSet(groups.iterator().next());
   }
 }

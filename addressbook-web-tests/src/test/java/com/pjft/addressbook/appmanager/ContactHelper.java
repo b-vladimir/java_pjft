@@ -2,6 +2,7 @@ package com.pjft.addressbook.appmanager;
 
 import com.pjft.addressbook.model.ContactData;
 import com.pjft.addressbook.model.Contacts;
+import com.pjft.addressbook.model.GroupData;
 import com.pjft.addressbook.tests.ContactInformationComparison;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -88,6 +89,10 @@ public class ContactHelper extends HelperBase {
     WebElement row = checkbox.findElement(By.xpath("./../.."));
     List<WebElement> cells = row.findElements(By.xpath("td"));
     cells.get(6).findElement(By.tagName("a")).click();
+  }
+
+  public void deleteFromGroup() {
+    click(By.name("remove"));
   }
 
   private void returnToContactPage() {
@@ -198,4 +203,12 @@ public class ContactHelper extends HelperBase {
     initAddContact();
   }
 
+  public void deleteContactFromGroup(ContactData contact) {
+    selectContactById(contact.getId());
+    deleteFromGroup();
+  }
+
+  public void selectGroupSet(GroupData group) {
+    new Select(wd.findElement(By.name("group"))).selectByValue(Integer.toString(group.getId()));
+  }
 }
