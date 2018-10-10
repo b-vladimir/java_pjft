@@ -44,7 +44,7 @@ public class TestBase {
     }else {
       Groups groups = app.db().groups();
       for (GroupData group : contact.getGroups()) {
-        groups.withOut(group);
+        groups = groups.withOut(group);
       }
       idGroup = groups.iterator().next().getId();
     }

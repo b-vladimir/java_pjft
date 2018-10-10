@@ -18,7 +18,8 @@ public class AddContactToGroupTests extends TestBase {
     int idGroup = verifyContactInGroup(addedContact);
     app.contact().addContact(addedContact, idGroup);
 
-    int afterAdd = addedContact.getGroups().size();
+    int afterAdd = app.db().contacts().;
+            //addedContact.getGroups().size();
 
     assertThat(beforeAdd, equalTo(afterAdd-1));
   }
