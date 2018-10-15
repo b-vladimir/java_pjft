@@ -10,7 +10,7 @@ dependencies{
     compile 'it.ozimov:guava-hamcrest-matchers:2.0.0'
 }
 
-test(type: Test){
+task testMantis(type: Test){
     useTestNG{
         suites 'src/test/resources/testng.xml'
         if (project.hasProperty('target')){
