@@ -51,4 +51,11 @@ public class ApplicationManager {
     wd = null;
   }
 
+  public HttpSession newSession(){
+    return new HttpSession(this);
+  }
+
+  public String getProperty(String key) {
+    return properties.getProperty(key);
+  }
 }
