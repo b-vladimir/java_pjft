@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
   private final Properties properties;
-  WebDriver wd;
+  private WebDriver wd;
   WebDriverWait wait;
 
   private String browser;
@@ -28,17 +28,6 @@ public class ApplicationManager {
   public void init() throws IOException {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
-    if (browser.equals(BrowserType.CHROME)){
-      wd = new ChromeDriver();
-    } else if (browser.equals(BrowserType.FIREFOX)){
-      wd = new FirefoxDriver();
-    }else if (browser.equals(BrowserType.IE)){
-      wd = new InternetExplorerDriver();
-    }
-    wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    wd.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-    wait = new WebDriverWait(wd, 30);
-    wd.get(properties.getProperty("web.BaseURL"));
   }
 
   public void stop() {
@@ -47,8 +36,10 @@ public class ApplicationManager {
     }catch (InterruptedException e){
       e.printStackTrace();
     }
-    wd.quit();
-    wd = null;
+    if (wd != null) {
+      wd.quit();
+      wd = null;
+    }
   }
 
   public HttpSession newSession(){
@@ -57,5 +48,22 @@ public class ApplicationManager {
 
   public String getProperty(String key) {
     return properties.getProperty(key);
+  }
+
+  public WebDriver getDriver(){
+    if (wd==null){
+      if (browser.equals(BrowserType.CHROME)){
+        wd = new ChromeDriver();
+      } else if (browser.equals(BrowserType.FIREFOX)){
+        wd = new FirefoxDriver();
+      }else if (browser.equals(BrowserType.IE)){
+        wd = new InternetExplorerDriver();
+      }
+      wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+      wd.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+      wait = new WebDriverWait(wd, 30);
+      wd.get(properties.getProperty("web.BaseURL"));
+    }
+    return wd;
   }
 }

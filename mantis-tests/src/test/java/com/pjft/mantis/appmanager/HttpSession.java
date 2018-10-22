@@ -24,8 +24,8 @@ public class HttpSession {
 
   public HttpSession(ApplicationManager app) {
     this.app = app;
-    httpClient = HttpClients.custom().setDefaultRequestConfig(RequestConfig.custom().setCircularRedirectsAllowed(true).build()).
-            setRedirectStrategy(new LaxRedirectStrategy()).build();
+    httpClient = HttpClients.custom().setRedirectStrategy(new LaxRedirectStrategy()).build();
+    //setDefaultRequestConfig(RequestConfig.custom().setCircularRedirectsAllowed(true).
   }
 
   public boolean login(String username, String password) throws IOException {
@@ -34,7 +34,9 @@ public class HttpSession {
     params.add(new BasicNameValuePair("username", username));
     params.add(new BasicNameValuePair("return", "index.php"));
     post.setEntity(new UrlEncodedFormEntity(params));
+    //post.setHeader("Cookie", "MANTIS_secure_session=0; PHPSESSID=1234");
     CloseableHttpResponse response1 = httpClient.execute(post);
+    String body = getTextFrom(response1);
     post = new HttpPost(app.getProperty("web.BaseURL") + "/login_password_page.php");
     params.clear();
     params.add(new BasicNameValuePair("username", username));
@@ -42,8 +44,9 @@ public class HttpSession {
     params.add(new BasicNameValuePair("secure_session", "on"));
     params.add(new BasicNameValuePair("return", "index.php"));
     post.setEntity(new UrlEncodedFormEntity(params));
+    //post.setHeader("Cookie", "MANTIS_secure_session=0; PHPSESSID=1234; MANTIS_STRING_COOKIE=123");
     CloseableHttpResponse response2 = httpClient.execute(post);
-    String body = getTextFrom(response2);
+    body = getTextFrom(response2);
     return body.contains(String.format("<span class=\"label hidden-xs label-default arrowed\">%s</span>", username));
   }
 
