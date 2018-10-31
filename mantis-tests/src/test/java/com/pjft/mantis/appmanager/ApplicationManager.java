@@ -18,6 +18,7 @@ public class ApplicationManager {
   private WebDriver wd;
   WebDriverWait wait;
 
+  private RegistrationHelper registrationHelper;
   private String browser;
 
   public ApplicationManager(String browser) {
@@ -65,5 +66,12 @@ public class ApplicationManager {
       wd.get(properties.getProperty("web.BaseURL"));
     }
     return wd;
+  }
+
+  public RegistrationHelper registration() {
+    if (registrationHelper == null){
+      registrationHelper = new RegistrationHelper(this);
+    }
+    return registrationHelper;
   }
 }
