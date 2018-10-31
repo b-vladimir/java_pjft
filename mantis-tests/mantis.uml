@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="80.50000000000001" y="281.0">com.pjft.mantis.tests.LoginTests</node>
+    <node x="59.95208333333335" y="202.0">com.pjft.mantis.tests.TestBase</node>
+    <node x="0.0" y="101.0">com.pjft.mantis.appmanager.ApplicationManager</node>
+    <node x="5.931250000000006" y="0.0">com.pjft.mantis.appmanager.HttpSession</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.pjft.mantis.appmanager.ApplicationManager" target="com.pjft.mantis.appmanager.HttpSession">
+      <point x="-82.125" y="-25.5" />
+      <point x="27.375" y="76.0" />
+      <point x="31.03125" y="76.0" />
+      <point x="-100.4" y="25.5" />
+    </edge>
+    <edge source="com.pjft.mantis.appmanager.HttpSession" target="com.pjft.mantis.appmanager.ApplicationManager">
+      <point x="0.0" y="25.5" />
+      <point x="131.43125" y="76.0" />
+      <point x="136.875" y="76.0" />
+      <point x="27.375" y="-25.5" />
+    </edge>
+    <edge source="com.pjft.mantis.tests.LoginTests" target="com.pjft.mantis.tests.TestBase">
+      <point x="0.0" y="-14.5" />
+      <point x="133.0" y="256.0" />
+      <point x="130.45208333333335" y="256.0" />
+      <point x="23.5" y="14.5" />
+    </edge>
+    <edge source="com.pjft.mantis.tests.TestBase" target="com.pjft.mantis.appmanager.ApplicationManager">
+      <point x="23.5" y="-14.5" />
+      <point x="130.45208333333335" y="177.0" />
+      <point x="164.25" y="177.0" />
+      <point x="54.75" y="25.5" />
+    </edge>
+    <edge source="com.pjft.mantis.tests.LoginTests" target="com.pjft.mantis.appmanager.HttpSession">
+      <point x="35.0" y="-14.5" />
+      <point x="168.0" y="256.0" />
+      <point x="229.5" y="256.0" />
+      <point x="229.5" y="76.0" />
+      <point x="231.83124999999998" y="76.0" />
+      <point x="100.39999999999998" y="25.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="0.0" y="200.5" />
+  <SelectedNodes>
+    <node>com.pjft.mantis.tests.TestBase</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
