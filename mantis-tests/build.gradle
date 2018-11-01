@@ -8,6 +8,8 @@ dependencies{
     compile 'org.testng:testng:6.14.3'
     compile 'org.seleniumhq.selenium:selenium-java:3.14.0'
     compile 'it.ozimov:guava-hamcrest-matchers:2.0.0'
+    compile 'mysql:mysql-connector-java:8.0.12'
+    compile 'org.hibernate:hibernate-core:5.3.6.Final'
     compile 'org.subethamail:subethasmtp:3.1.7'
     compile 'ru.lanwen.verbalregex:java-verbal-expressions:1.6'
     compile 'ch.qos.logback:logback-classic:1.3.0-alpha4'
