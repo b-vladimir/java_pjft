@@ -23,10 +23,10 @@ public class DbHelper {
     sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
   }
 
-  public Set<UserData> groups(){
+  public Set<UserData> users(){
     Session session = sessionFactory.openSession();
     session.beginTransaction();
-    List result = session.createQuery( "from UserData" ).list();
+    List result = session.createQuery( "from UserData where not id=1" ).list();
     session.getTransaction().commit();
     session.close();
     return new HashSet<>(result);
